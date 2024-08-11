@@ -1,0 +1,36 @@
+Projeto 5s:
+
+Esse projeto tem por finalidade, realizar uma gestão para os auditores.
+A metodologia 5S é uma ferramenta prática que orienta a missão da
+equipe em cinco condições diferentes, criando um ambiente favorável
+para que a instituição alcance um nível de atuação mais competitivo.
+
+Isso favorece a criatividade e a inovação, ampliando as oportunidades
+de crescimento de qualquer negócio.
+
+O sistema possuira as seguintes telas:
+
+- login;
+- página inicial (contendo informações sobre o que é o programa);
+- tela de cadastro de donos de área;
+- tela de avaliação;
+- tela de acompanhamento(para usuário);
+
+Classes que serão utilizadas:
+
+- Classe Pessoa
+  Atributos = Nome Completo | Função | Tipo de usuário (auditor ou usuário normal)
+  Métodos getNome | getFuncao | getTipoUser
+
+- Classe Avaliação
+  Atributos = Nota | Comentário | Auditor | média
+  Métodos = editarNota | editarComentario | excluir tanto um quanto outro | getMedia
+  Setor o auditor automáticamente;
+
+- Classe Cadastro Area
+  Atributos = Nome da area | Sala (id) | Pessoa Responsável
+  Métodos = getNomeSala | getEditarSala | getExcluirSala
+
+- Classe gerenciamento de auditorias
+  Atributos = idAuditoria | data
+  Método = pesquisa
