@@ -4,9 +4,17 @@
   "description": "Projeto 5s:",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc",
+    "start": "live-server --port=3000",
+    "watch": "tsc --watch",
+    "dev": "concurrently \"npm run build -- --watch\" \"npm start\""
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^7.6.0",
+    "live-server": "^1.2.2",
+    "typescript": "^5.5.4"
+  }
 }
