@@ -1,0 +1,15 @@
+# Node.js
+node_modules/
+
+# Outros padrões comuns
+# Arquivos temporários
+*.tmp
+*.swp
+*~
+
+# Logs
+logs/
+*.log
+
+# Arquivos de configuração local
+.DS_Store

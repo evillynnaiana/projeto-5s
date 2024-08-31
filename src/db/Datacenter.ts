@@ -1,22 +1,58 @@
-import { Pessoa } from '../model/Pessoa';
+export default class Datacenter<T> {
+    private dados: T[] = [];
+    private storageKey: string;
 
-const pessoas: Pessoa[] = [];
+    constructor(private keySelector: (item: T) => string, storageKey: string) {
+        this.storageKey = storageKey;
+        this.load();
+    }
 
-export function adicionarPessoa(nomeCompleto: string, funcao: string, tipoUsuario: string, senha: string): void {
-    const novaPessoa = new Pessoa(nomeCompleto, funcao, tipoUsuario, senha);
-    pessoas.push(novaPessoa);
-    console.log('Pessoa adicionada:', novaPessoa);
-}
+    public adicionar(item: T): void {
+        this.dados.push(item);
+        this.save();
+    }
 
-export function obterPessoas(): Pessoa[] {
-    return pessoas;
-}
+    public obterTodos(): T[] {
+        return [...this.dados];
+    }
 
-export function buscarPessoaPorNome(nomeCompleto: string): Pessoa | undefined {
-    return pessoas.find((pessoa) => pessoa.getNome() === nomeCompleto);
-}
+    public buscarPorChave(chave: string): T | undefined {
+        return this.dados.find((item) => this.keySelector(item) === chave);
+    }
 
-export function autenticar(nomeCompleto: string, senha: string): boolean {
-    const pessoa = buscarPessoaPorNome(nomeCompleto);
-    return pessoa ? pessoa.verificarSenha(senha) : false;
+    public atualizar(chave: string, novosDados: Partial<T>): boolean {
+        const index = this.dados.findIndex((item) => this.keySelector(item) === chave);
+        if (index !== -1) {
+            this.dados[index] = { ...this.dados[index], ...novosDados };
+            this.save();
+            return true;
+        }
+        return false;
+    }
+
+    public remover(chave: string): boolean {
+        const index = this.dados.findIndex((item) => this.keySelector(item) === chave);
+        if (index !== -1) {
+            this.dados.splice(index, 1);
+            this.save();
+            return true;
+        }
+        return false;
+    }
+
+    private load(): void {
+        const storedData = localStorage.getItem(this.storageKey);
+        if (storedData) {
+            const parsedData = JSON.parse(storedData);
+            this.dados = parsedData.map((item: any) => this.reconstruct(item));
+        }
+    }
+
+    protected reconstruct(data: any): T {
+        return data as T;
+    }
+
+    private save(): void {
+        localStorage.setItem(this.storageKey, JSON.stringify(this.dados));
+    }
 }

@@ -1,7 +1,4 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.Pessoa = void 0;
-class Pessoa {
+export default class Pessoa {
     constructor(usuario, funcao, tipoUsuario, senha) {
         this.usuario = usuario;
         this.funcao = funcao;
@@ -21,4 +18,3 @@ class Pessoa {
         return this.senha === senha;
     }
 }
-exports.Pessoa = Pessoa;

@@ -1,0 +1,175 @@
+.ativo {
+    color: #ffffff9f!important;
+}
+
+
+#conteudo_principal {
+    background-color: #f0f0f0;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 10px;
+}
+
+
+/* Estilos dos botões */
+
+#btn {
+    background-color: #000000; 
+    border: none;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3); 
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+#btn:hover {
+    background-color: rgba(0, 0, 0, 0.8); 
+    box-shadow: none; 
+    transform: translateY(2px); 
+}
+
+
+#usuario, #senha, #areaName, #areaId, #areaOwner{
+    box-shadow: none;
+    outline: none; 
+}    
+
+#usuario:focus, #senha:focus, #areaName:focus, #areaId:focus, #areaOwner:focus{
+    box-shadow: none;
+    border-color: #35353518; 
+    outline: none;  
+}    
+
+
+/* a{
+color: #000000 !important;} */
+
+
+#img-cadastro{
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    display: block;
+}
+
+
+/* ESTILOS DO INDEX.HTML */
+
+
+body {
+    background-color: #fff;
+    color: #333;
+}
+.navbar {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.navbar a {
+    color: #fff;
+}
+.card {
+    background-color: #f8f9fa;
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+.card:hover {
+    transform: translateY(-5px);
+}
+.card-header {
+    background-color: transparent;
+    color: #333;
+    font-weight: bold;
+    text-align: center;
+}
+.card-body {
+    color: #555;
+    text-align: center;
+}
+.card-body img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 15px;
+}
+.carousel-item img {
+    object-fit: cover;
+    height: 500px;
+}
+
+
+/* Estilo dos cadastros das áreas */
+
+.form-section {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+.table-section {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.table th, .table td {
+    vertical-align: middle;
+    text-align: center;
+}
+
+/* styles.css */
+body {
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+.table-section {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table th, .table td {
+    vertical-align: middle;
+    text-align: center;
+    padding: 15px;
+}
+
+.table th {
+    background-color: #343a40;
+    color: #fff;
+    font-weight: bold;
+}
+
+.table td {
+    background-color: #f8f9fa;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #e9ecef;
+}
+
+.table-input {
+    width: 100px;
+}
+
+.status {
+    font-weight: bold;
+}
+
+.status.aprovado {
+    color: green;
+}
+
+.status.reprovado {
+    color: red;
+}
+
+.status.neutro {
+    color: gray;
+}

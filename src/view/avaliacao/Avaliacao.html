@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avaliação 5S</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/src/css/styles.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/index.html">Programa 5S</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/src/view/salas/CadastrarSalas.html">Cadastrar Sala</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link ativo" href="/src/view/avaliacao/Avaliacao.html">Avaliação</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/src/view/avaliacao/Resultados.html">Resultado</a>
+                        </li>
+                    </ul>
+                </div>
+        </div>
+    </nav>
+
+    <div class="container my-5 pt-5">
+        <h1 class="text-center mb-4">Avaliação 5S</h1>
+
+        <!-- Form Section -->
+        <div class="form-section">
+            <form id="avaliacaoForm">
+                <div class="mb-3">
+                    <label for="salaSelect" class="form-label">Selecione a Sala:</label>
+                    <select class="form-select" id="salaSelect">
+                        <option value="" selected disabled>Escolha a sala...</option>
+                        <option value="Sala 1">Sala 1</option>
+                        <option value="Sala 2">Sala 2</option>
+                        <option value="Sala 3">Sala 3</option>
+                        <!-- Adicione mais opções conforme necessário -->
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="auditorName" class="form-label">Nome do Auditor:</label>
+                    <input type="text" class="form-control" id="auditorName" required>
+                </div>
+            </form>
+        </div>
+
+        <!-- Table Section -->
+        <div class="table-section">
+            <h2 class="text-center mb-4">Avaliação dos Sensos</h2>
+            <table class="table table-striped table-responsive">
+                <thead class="table-dark">
+                    <tr>
+                        <th scope="col">Senso</th>
+                        <th scope="col">Critério</th>
+                        <th scope="col">Nota</th>
+                    </tr>
+                </thead>
+                <tbody id="avaliacaoTableBody">
+                    <!-- Senso 1 - Seiri -->
+                    <tr>
+                        <td rowspan="3">Seiri - Senso de Utilização</td>
+                        <td>Eliminação de itens desnecessários</td>
+                        <td><input type="number" class="form-control table-input" id="notaSeiri1" min="0" max="10" oninput="calcularSoma('seiri')"></td>
+                    </tr>
+                    <tr>
+                        <td>Organização dos materiais úteis</td>
+                        <td><input type="number" class="form-control table-input" id="notaSeiri2" min="0" max="10" oninput="calcularSoma('seiri')"></td>
+                    </tr>
+                    <tr>
+                        <td>Utilização eficiente do espaço</td>
+                        <td><input type="number" class="form-control table-input" id="notaSeiri3" min="0" max="10" oninput="calcularSoma('seiri')"></td>
+                    </tr>
+                    <tr class="status-row">
+                        <td colspan="2" class="status" id="statusSeiri">Status: <span id="statusSeiriText" class="status neutro">Aguardando Notas</span></td>
+                        <td><span id="somaSeiri">Soma: 0</span></td>
+                    </tr>
+
+                    <!-- Senso 2 - Seiton -->
+                    <tr>
+                        <td rowspan="3">Seiton - Senso de Organização</td>
+                        <td>Identificação clara dos materiais</td>
+                        <td><input type="number" class="form-control table-input" id="notaSeiton1" min="0" max="10" oninput="calcularSoma('seiton')"></td>
+                    </tr>
+                    <tr>
+                        <td>Facilidade de acesso aos itens</td>
+                        <td><input type="number" class="form-control table-input" id="notaSeiton2" min="0" max="10" oninput="calcularSoma('seiton')"></td>
+                    </tr>
+                    <tr>
+                        <td>Arranjo lógico dos materiais</td>
+                        <td><input type="number" class="form-control table-input" id="notaSeiton3" min="0" max="10" oninput="calcularSoma('seiton')"></td>
+                    </tr>
+                    <tr class="status-row">
+                        <td colspan="2" class="status" id="statusSeiton">Status: <span id="statusSeitonText" class="status neutro">Aguardando Notas</span></td>
+                        <td><span id="somaSeiton">Soma: 0</span></td>
+                    </tr>
+
+                    <!-- Senso 3 - Seiso -->
+                    <tr>
+                        <td rowspan="3">Seiso - Senso de Limpeza</td>
+                        <td>Limpeza geral do ambiente</td>
+                        <td><input type="number" class="form-control table-input" id="notaSeiso1" min="0" max="10" oninput="calcularSoma('seiso')"></td>
+                    </tr>
+                    <tr>
+                        <td>Remoção de sujeira e resíduos</td>
+                        <td><input type="number" class="form-control table-input" id="notaSeiso2" min="0" max="10" oninput="calcularSoma('seiso')"></td>
+                    </tr>
+                    <tr>
+                        <td>Manutenção de um ambiente limpo</td>
+                        <td><input type="number" class="form-control table-input" id="notaSeiso3" min="0" max="10" oninput="calcularSoma('seiso')"></td>
+                    </tr>
+                    <tr class="status-row">
+                        <td colspan="2" class="status" id="statusSeiso">Status: <span id="statusSeisoText" class="status neutro">Aguardando Notas</span></td>
+                        <td><span id="somaSeiso">Soma: 0</span></td>
+                    </tr>
+
+                    <!-- Senso 4 - Seiketsu -->
+                    <tr>
+                        <td rowspan="3">Seiketsu - Senso de Normalização</td>
+                        <td>Padronização de práticas</td>
+                        <td><input type="number" class="form-control table-input" id="notaSeiketsu1" min="0" max="10" oninput="calcularSoma('seiketsu')"></td>
+                    </tr>
+                    <tr>
+                        <td>Manutenção das normas estabelecidas</td>
+                        <td><input type="number" class="form-control table-input" id="notaSeiketsu2" min="0" max="10" oninput="calcularSoma('seiketsu')"></td>
+                    </tr>
+                    <tr>
+                        <td>Verificação regular dos padrões</td>
+                        <td><input type="number" class="form-control table-input" id="notaSeiketsu3" min="0" max="10" oninput="calcularSoma('seiketsu')"></td>
+                    </tr>
+                    <tr class="status-row">
+                        <td colspan="2" class="status" id="statusSeiketsu">Status: <span id="statusSeiketsuText" class="status neutro">Aguardando Notas</span></td>
+                        <td><span id="somaSeiketsu">Soma: 0</span></td>
+                    </tr>
+
+                    <!-- Senso 5 - Shitsuke -->
+                    <tr>
+                        <td rowspan="3">Shitsuke - Senso de Disciplina</td>
+                        <td>Cumprimento das regras</td>
+                        <td><input type="number" class="form-control table-input" id="notaShitsuke1" min="0" max="10" oninput="calcularSoma('shitsuke')"></td>
+                    </tr>
+                    <tr>
+                        <td>Incentivo à autodisciplina</td>
+                        <td><input type="number" class="form-control table-input" id="notaShitsuke2" min="0" max="10" oninput="calcularSoma('shitsuke')"></td>
+                    </tr>
+                    <tr>
+                        <td>Monitoramento contínuo</td>
+                        <td><input type="number" class="form-control table-input" id="notaShitsuke3" min="0" max="10" oninput="calcularSoma('shitsuke')"></td>
+                    </tr>
+                    <tr class="status-row">
+                        <td colspan="2" class="status" id="statusShitsuke">Status: <span id="statusShitsukeText" class="status neutro">Aguardando Notas</span></td>
+                        <td><span id="somaShitsuke">Soma: 0</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function calcularSoma(senso) {
+            const notas = [];
+            for (let i = 1; i <= 3; i++) {
+                const nota = parseFloat(document.getElementById(`nota${senso.charAt(0).toUpperCase() + senso.slice(1)}${i}`).value) || 0;
+                notas.push(nota);
+            }
+            const soma = notas.reduce((total, nota) => total + nota, 0);
+            const statusElement = document.getElementById(`status${senso.charAt(0).toUpperCase() + senso.slice(1)}`);
+            const statusText = document.getElementById(`status${senso.charAt(0).toUpperCase() + senso.slice(1)}Text`);
+            const somaElement = document.getElementById(`soma${senso.charAt(0).toUpperCase() + senso.slice(1)}`);
+
+            somaElement.textContent = `Soma: ${soma}`;
+            if (soma < 15) {
+                statusText.textContent = 'Reprovado';
+                statusText.className = 'status reprovado';
+            } else if (soma >= 15 && soma <= 30) {
+                statusText.textContent = 'Aprovado';
+                statusText.className = 'status aprovado';
+            } else {
+                statusText.textContent = 'Valor Inválido';
+                statusText.className = 'status neutro';
+            }
+        }
+    </script>
+</body>
+</html>

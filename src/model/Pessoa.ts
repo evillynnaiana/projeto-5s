@@ -1,15 +1,10 @@
-export class Pessoa {
-    private usuario: string;
-    private funcao: string;
-    private tipoUsuario: string;
-    private senha: string;
-
-    constructor(usuario: string, funcao: string, tipoUsuario: string, senha: string) {
-        this.usuario = usuario;
-        this.funcao = funcao;
-        this.tipoUsuario = tipoUsuario;
-        this.senha = senha;
-    }
+export default class Pessoa {
+    constructor(
+        private usuario: string,
+        private funcao: string,
+        private tipoUsuario: string,
+        private senha: string
+    ) {}
 
     public getNome(): string {
         return this.usuario;

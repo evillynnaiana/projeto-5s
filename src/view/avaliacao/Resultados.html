@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificação 5S</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="styles.css" rel="">
+    <link rel="stylesheet" href="/src/css/styles.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/index.html">Programa 5S</a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/src/view/salas/CadastrarSalas.html">Cadastrar Sala</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/src/view/avaliacao/Avaliacao.html">Avaliação</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link ativo" href="/src/view/avaliacao/Resultados.html">Resultado</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container my-5 pt-5">
+        <h1 class="text-center mb-4">Certificação 5S</h1>
+
+        <!-- Form Section -->
+        <div class="form-section">
+            <form id="certificacaoForm">
+                <div class="mb-3">
+                    <label for="salaSelect" class="form-label">Selecione a Sala:</label>
+                    <select class="form-select" id="salaSelect" onchange="mostrarCertificacao()">
+                        <option value="" selected disabled>Escolha a sala...</option>
+                        <option value="Sala 1">Sala 1</option>
+                        <option value="Sala 2">Sala 2</option>
+                        <option value="Sala 3">Sala 3</option>
+                        <!-- Adicione mais opções conforme necessário -->
+                    </select>
+                </div>
+            </form>
+        </div>
+
+        <!-- Result Section -->
+        <div class="result-section">
+            <h2 class="text-center mb-4">Resultado da Certificação</h2>
+            <div id="resultContent">
+                <!-- Dados da sala -->
+                <div class="mb-3">
+                    <p><strong>Nome da Sala:</strong> <span id="salaNome"></span></p>
+                    <p><strong>Número da Sala:</strong> <span id="salaNumero"></span></p>
+                    <p><strong>Nome do Dono da Área:</strong> <span id="donoArea"></span></p>
+                </div>
+                <!-- Resultado da certificação -->
+                <p id="resultado" class="result"></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function mostrarCertificacao() {
+            const salaSelect = document.getElementById('salaSelect').value;
+            const resultContent = document.getElementById('resultContent');
+            const resultado = document.getElementById('resultado');
+            
+            // Simulação de dados - substituir com dados reais ou consulta de backend
+            const salas = {
+                'Sala 1': { nome: 'Sala 1', numero: '001', dono: 'João Silva', aprovado: true },
+                'Sala 2': { nome: 'Sala 2', numero: '002', dono: 'Maria Oliveira', aprovado: false },
+                'Sala 3': { nome: 'Sala 3', numero: '003', dono: 'Carlos Santos', aprovado: true },
+            };
+
+            if (salaSelect) {
+                const sala = salas[salaSelect];
+                document.getElementById('salaNome').textContent = sala.nome;
+                document.getElementById('salaNumero').textContent = sala.numero;
+                document.getElementById('donoArea').textContent = sala.dono;
+                
+                if (sala.aprovado) {
+                    resultado.textContent = 'Certificação Aprovada';
+                    resultado.style.color = 'green';
+                } else {
+                    resultado.textContent = 'Certificação Reprovada';
+                    resultado.style.color = 'red';
+                }
+            } else {
+                resultContent.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
