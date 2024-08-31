@@ -34,3 +34,15 @@ Classes que serão utilizadas:
 - Classe gerenciamento de auditorias
   Atributos = idAuditoria | data
   Método = pesquisa
+
+
+PADRÃO DO PROJETO:
+
+MVC - Model, View e Controller
+
+Requesitos:
+( ) 20% classificação do sistema – atributos, métodos, decisões de projeto.
+( ) 20% relacionamento correto entre classes e funcionando – instâncias, agregações/composições, heranças.
+( ) 20% boas práticas de programação – organização do código, sintaxe.
+( ) 20% lógica de programação – regras de negócio.
+( ) 20% testes de funcionalidade do sistema – sistema funcional
